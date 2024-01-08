@@ -1,0 +1,15 @@
+<svg width="181px" height="30px" viewBox="0 0 181 30" version="1.1" xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="编组-23">
+      <g id="编组-21" fill="#F3F3F3">
+        <rect id="矩形" x="0" y="0" width="68" height="30"></rect>
+      </g>
+      <rect id="矩形" fill="#F3F3F3" x="72" y="0" width="109" height="17"></rect>
+      <rect id="矩形" fill="#F3F3F3" x="72" y="20" width="109" height="10"></rect>
+      <text id="TEST" font-family="STSongti-SC-Regular, Songti SC" font-size="10" font-weight="normal" fill="#121212">
+        <tspan x="22.155" y="19">TEST</tspan>
+      </text>
+    </g>
+  </g>
+</svg>

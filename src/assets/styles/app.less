@@ -1,0 +1,95 @@
+@import './layout.less';
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family:
+    LarkHackSafariFont,
+    LarkEmojiFont,
+    LarkChineseQuote,
+    -apple-system,
+    BlinkMacSystemFont,
+    Helvetica Neue,
+    Tahoma,
+    PingFang SC,
+    Microsoft Yahei,
+    Arial,
+    Hiragino Sans GB,
+    sans-serif,
+    Apple Color Emoji,
+    Segoe UI Emoji,
+    Segoe UI Symbol,
+    Noto Color Emoji;
+}
+
+.d-error-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 内容区筛选栏 */
+.d-content-filter {
+  padding: 10px 5px 0 5px;
+  background: rgba(60, 74, 115, 0.02);
+  margin-bottom: 5px;
+  border-radius: 8px;
+  z-index: 0;
+  position: relative;
+
+  /* 筛选栏背景（此背景可以抽离出来） */
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: url('../images/short-logo.png');
+    background-size: auto 40px;
+    -webkit-filter: brightness(0) invert(1);
+    filter: brightness(0) invert(1);
+    opacity: 1;
+  }
+
+  .ant-form-inline .ant-form-item {
+    margin-bottom: 8px;
+  }
+}
+
+.d-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  .t-loading__parent {
+    height: 100%;
+  }
+
+  .t-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .d-form-content {
+      flex: 1;
+      overflow: auto;
+      padding: 8px;
+    }
+
+    .d-form-footer {
+      display: flex;
+      flex-direction: row-reverse;
+      padding: 8px 15px;
+      margin-bottom: 0;
+      border-top: 1px solid #f3f3f3;
+    }
+  }
+}
