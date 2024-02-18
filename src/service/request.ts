@@ -3,7 +3,7 @@
  * @Author: yong.li
  * @Date: 2024-01-04 14:05:08
  * @LastEditors: yong.li
- * @LastEditTime: 2024-01-08 10:00:39
+ * @LastEditTime: 2024-02-18 09:51:02
  */
 
 import axios, { Method, AxiosRequestConfig } from 'axios'
@@ -65,7 +65,7 @@ export default async function axiosRequest({
     const hasRequestURLRate = findLast(requestURLRates, (o: unknown) => (o as FindLastParam).api === api)
 
     if (hasRequestURLRate) {
-      message.warning('当前访问的频次过高，请适当放慢手速！', 1)
+      message.warning('当前访问的频次过高，请适当放慢手速！', 3000)
       // 为了保持数据完整性，返回数据与接口定义一致
       const res: ApiResponseType = {
         errcode: -1,
@@ -109,7 +109,7 @@ export default async function axiosRequest({
         const response: ApiResponseType = res.data
         const { errcode, msg } = response
         if (errcode !== 0) {
-          message.error(msg || '接口数据未知错误！', 1)
+          message.error(msg || '接口数据未知错误！', 3000)
           // 直接跳转到登录页面（简单粗暴）
           if (['401', 401, 2].includes(errcode)) {
             // 清空缓存
@@ -121,7 +121,7 @@ export default async function axiosRequest({
       })
       .catch(async (error) => {
         if (error) {
-          message.error('接口请求发生逻辑错误！', 1)
+          message.error('接口请求发生逻辑错误！', 3000)
         }
         reject(error)
       })

@@ -3,7 +3,7 @@
  * @Author: yong.li
  * @Date: 2024-01-04 10:56:01
  * @LastEditors: yong.li
- * @LastEditTime: 2024-01-08 09:59:46
+ * @LastEditTime: 2024-02-18 10:04:19
  */
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -13,6 +13,8 @@ import { shallow } from 'zustand/shallow'
 import siteMetadata from '@/config/siteMetadata'
 import { useSystemStore } from '@/store'
 import api from '@/service/api'
+import { initSocket } from '@/utils/socket.io'
+import localStorage from '@/utils/localStorage'
 import styles from './styles/login.module.less'
 
 const { FormItem } = Form
@@ -33,8 +35,22 @@ const Login = () => {
       setLoading(false)
       if (errcode === 0) {
         currentUserInfoSetup(data)
-        navigate('/dashboard')
+        handleGetAuthority()
       }
+    }
+  }
+
+  /**
+   * 获取权限
+   */
+  const handleGetAuthority = async () => {
+    const { errcode, data } = await api.getCurrentAuthority()
+    if (errcode === 0) {
+      localStorage.set('_USER_AUTHCODE', data, 'crypto-hash')
+    }
+    if (errcode === 0) {
+      initSocket()
+      navigate('/')
     }
   }
 
