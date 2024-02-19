@@ -47,7 +47,7 @@ const Main = () => {
    */
   const handleInitTheme = async () => {
     const cacheColor = localStorage.get('_THEME') || themeColor
-    document.body.setAttribute('style', `--d-primary-color: ${cacheColor}`)
+    document.body.setAttribute('style', `--td-brand-color: ${cacheColor}`)
     setThemeColor(cacheColor)
   }
   /**

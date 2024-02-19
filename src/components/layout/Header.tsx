@@ -3,11 +3,11 @@
  * @Author: yong.li
  * @Date: 2024-01-04 10:47:18
  * @LastEditors: yong.li
- * @LastEditTime: 2024-01-08 09:59:18
+ * @LastEditTime: 2024-02-19 09:04:52
  */
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Avatar, Button, Popup, Tooltip, DialogPlugin } from 'tdesign-react'
+import { Avatar, Button, Popup, Tooltip, DialogPlugin, ColorPicker } from 'tdesign-react'
 import { HelpCircleIcon } from 'tdesign-icons-react'
 import siteMetadata from '@/config/siteMetadata'
 import formatConfig from '@/utils/format'
@@ -33,7 +33,7 @@ export default function MainHeader() {
   const userAvatar = 'http://static.dingtalk.com/media/lADOACOdmMygzKA_160_160.jpg'
   const [currentDate, setCurrentDate] = useState<string>('')
   const [weather, setWeather] = useState<string>('')
-  const { currentUserInfo, currentUserInfoSetup } = useSystemStore((state) => state, shallow)
+  const { currentUserInfo, currentUserInfoSetup, colorPrimary, themeSetup } = useSystemStore((state) => state, shallow)
 
   useEffect(() => {
     handleGetCurrentDate()
@@ -145,6 +145,9 @@ export default function MainHeader() {
         <ul>
           <li>{currentDate}</li>
           <li>{weather}</li>
+          <li>
+            <ColorPicker defaultValue={colorPrimary} format="HEX" onChange={(value) => themeSetup(value)} />
+          </li>
           <li>
             <Tooltip content="查看操作手册" placement="bottom">
               <Link to={siteMetadata.manualUrl} target="view_window" className="d-header-nav-icon">
