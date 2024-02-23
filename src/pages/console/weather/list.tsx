@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react'
-import { Button, Table, PrimaryTableCol, PrimaryTableCellParams, Drawer } from 'tdesign-react'
-import { PlusIcon } from 'tdesign-icons-react'
+import { Table, PrimaryTableCol, PrimaryTableCellParams, Drawer } from 'tdesign-react'
+// import { PlusIcon } from 'tdesign-icons-react'
 import { useQuery } from '@tanstack/react-query'
-import AuthValidator from '@/components/AuthValidator'
+// import AuthValidator from '@/components/AuthValidator'
 import ListFilterUnit from './filter'
-import WeatherCreate from './create'
+// import WeatherCreate from './create'
 import operate from '@/utils/operate'
 import { shallow } from 'zustand/shallow'
 import api from '@/service/api'
@@ -65,13 +65,13 @@ export default function WeatherList() {
    * 操作
    * @param type create 创建
    */
-  const handleOperate = async (type: 'create') => {
-    switch (type) {
-      case 'create':
-        setSubDrawer({ visible: true, header: '新增天气', component: <WeatherCreate onCallback={handleCloseDrawer} /> })
-        break
-    }
-  }
+  // const handleOperate = async (type: 'create') => {
+  //   switch (type) {
+  //     case 'create':
+  //       setSubDrawer({ visible: true, header: '新增天气', component: <WeatherCreate onCallback={handleCloseDrawer} /> })
+  //       break
+  //   }
+  // }
 
   /**
    * 关闭抽屉
@@ -112,13 +112,13 @@ export default function WeatherList() {
     <>
       <ListFilterUnit
         onFilter={handleFilter}
-        extraContent={
-          <AuthValidator module="/console/weather" type="button" operate="create">
-            <Button icon={<PlusIcon />} theme="primary" onClick={() => handleOperate('create')}>
-              创建
-            </Button>
-          </AuthValidator>
-        }
+        // extraContent={
+        //   <AuthValidator module="/console/weather" type="button" operate="create">
+        //     <Button icon={<PlusIcon />} theme="primary" onClick={() => handleOperate('create')}>
+        //       创建
+        //     </Button>
+        //   </AuthValidator>
+        // }
       />
 
       <Table
