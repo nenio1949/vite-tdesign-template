@@ -2,7 +2,7 @@
  * @Description: 基础配置数据
  * @Author: qingzi.wang
  * @Date: 2023-04-12 09:26:34
- * @LastEditTime: 2024-01-08 09:59:36
+ * @LastEditTime: 2024-02-19 09:14:09
  */
 import localFullLogoPath from '@/assets/images/logo.svg'
 import localLogoPath from '@/assets/images/logo-mini.svg'
@@ -53,7 +53,7 @@ export interface GConfig {
 }
 const year = new Date().getFullYear()
 const siteMetadata = {
-  title: '设备维修维护管理系统',
+  title: 'vite+react+ts+tdesign模板',
   copyright: `北京XXX科技有限公司 技术支持 Copyright ©${year}`,
   headerTitle: 'Reactjs+Antd+Typescript',
   description: '基于Reactjs、React-router、Antd-design的开发模版项目',

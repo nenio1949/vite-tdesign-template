@@ -122,7 +122,8 @@ export default function WeatherList() {
       />
 
       <Table
-        rowKey="index"
+        rowKey="id"
+        bordered
         resizable
         tableLayout="fixed"
         loading={isFetching}
