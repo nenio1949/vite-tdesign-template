@@ -125,6 +125,7 @@ export default function WeatherList() {
         rowKey="id"
         bordered
         resizable
+        headerAffixedTop={{ offsetTop: 135, zIndex: 1000 }}
         tableLayout="fixed"
         loading={isFetching}
         data={data?.data || []}

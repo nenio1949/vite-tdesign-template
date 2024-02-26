@@ -36,7 +36,7 @@ export default function ListFilterUnit({ onFilter, extraContent }: IListFilterUn
   return (
     <>
       <div className="d-content-filter">
-        <Form layout="inline" form={form} onSubmit={handleSubmit} onReset={handleReset}>
+        <Form layout="inline" colon form={form} onSubmit={handleSubmit} onReset={handleReset}>
           <FormItem name="name" label="名称">
             <Input clearable maxlength={50} placeholder="请输入名称" />
           </FormItem>
