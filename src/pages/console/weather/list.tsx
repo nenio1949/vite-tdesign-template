@@ -125,6 +125,7 @@ export default function WeatherList() {
         rowKey="id"
         bordered
         resizable
+        hover
         headerAffixedTop={{ offsetTop: 135, zIndex: 1000 }}
         tableLayout="fixed"
         loading={isFetching}

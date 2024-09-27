@@ -1,8 +1,10 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
 import viteEslint from 'vite-plugin-eslint'
 import { join } from 'path'
 import viteCompression from 'vite-plugin-compression'
+
+const config = loadEnv('development', './')
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,7 +12,8 @@ export default defineConfig({
     react(),
     viteCompression(),
     viteEslint({
-      failOnError: false
+      failOnError: false,
+      exclude: ['/virtual:/', 'node_modules/**']
     })
   ],
   server: {
@@ -18,7 +21,7 @@ export default defineConfig({
     proxy: {
       // 跨域处理
       '/v1': {
-        target: 'http://frp.funenc.xyz:7346',
+        target: config.VITE_APP_SERVER_HOST,
         changeOrigin: true
       }
     }

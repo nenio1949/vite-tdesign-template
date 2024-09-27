@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "vite serve --mode development",
+    "staging": "vite build --mode staging",
+    "pro": "vite build --mode production",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "prepare": "husky install",
@@ -25,7 +26,7 @@
     "react-router-dom": "^6.21.1",
     "socket.io-client": "^4.7.4",
     "tdesign-icons-react": "^0.3.2",
-    "tdesign-react": "^1.4.3",
+    "tdesign-react": "^1.9.1",
     "zustand": "^4.4.7"
   },
   "devDependencies": {
