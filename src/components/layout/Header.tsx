@@ -3,11 +3,11 @@
  * @Author: yong.li
  * @Date: 2024-01-04 10:47:18
  * @LastEditors: yong.li
- * @LastEditTime: 2024-02-19 09:04:52
+ * @LastEditTime: 2024-10-08 15:33:04
  */
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Avatar, Button, Popup, Tooltip, DialogPlugin, ColorPicker } from 'tdesign-react'
+import { Avatar, Button, Popup, Tooltip, DialogPlugin, ColorPicker, Switch } from 'tdesign-react'
 import { HelpCircleIcon } from 'tdesign-icons-react'
 import siteMetadata from '@/config/siteMetadata'
 import formatConfig from '@/utils/format'
@@ -33,7 +33,10 @@ export default function MainHeader() {
   const userAvatar = 'http://static.dingtalk.com/media/lADOACOdmMygzKA_160_160.jpg'
   const [currentDate, setCurrentDate] = useState<string>('')
   const [weather, setWeather] = useState<string>('')
-  const { currentUserInfo, currentUserInfoSetup, colorPrimary, themeSetup } = useSystemStore((state) => state, shallow)
+  const { currentUserInfo, currentUserInfoSetup, colorPrimary, themeSetup, themeMode, themeModeSetup } = useSystemStore(
+    (state) => state,
+    shallow
+  )
 
   useEffect(() => {
     handleGetCurrentDate()
@@ -143,6 +146,21 @@ export default function MainHeader() {
       </div>
       <div className="d-header-nav">
         <ul>
+          <li>
+            <Switch
+              size="large"
+              value={themeMode}
+              label={['dark', 'light']}
+              onChange={(value) => {
+                themeModeSetup(value)
+                if (value) {
+                  document.documentElement.setAttribute('theme-mode', 'dark')
+                } else {
+                  document.documentElement.removeAttribute('theme-mode')
+                }
+              }}
+            />
+          </li>
           <li>{currentDate}</li>
           <li>{weather}</li>
           <li>

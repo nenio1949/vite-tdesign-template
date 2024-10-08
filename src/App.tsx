@@ -47,9 +47,22 @@ const Main = () => {
    */
   const handleInitTheme = async () => {
     const cacheColor = localStorage.get('_THEME') || themeColor
-    document.body.setAttribute('style', `--td-brand-color: ${cacheColor}`)
+    document.documentElement.setAttribute('style', `--td-brand-color: ${cacheColor}`)
     setThemeColor(cacheColor)
   }
+
+  /**
+   * hex转rgba
+   * @param hex hex色值
+   * @returns rgb
+   */
+  // const HexToRGBA = (hex: string, opacity: number = 1) => {
+  //   const r = parseInt(hex.slice(0, 2), 16) * 255
+  //   const g = parseInt(hex.slice(2, 4), 16) * 255
+  //   const b = parseInt(hex.slice(4, 6), 16) * 127
+
+  //   return `rgba(${r}, ${g}, ${b}, ${opacity})`
+  // }
   /**
    * 移除页面加载遮罩
    */
@@ -69,6 +82,7 @@ const Main = () => {
     if (errcode === 0) {
       localStorage.set('_USER_AUTHCODE', data, 'crypto-hash')
     } else {
+      window.location.href = '/login'
       localStorage.set('_USER_AUTHCODE', [], 'crypto-hash')
     }
     setIsAuthLoading(false)

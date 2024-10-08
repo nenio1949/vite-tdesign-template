@@ -3,7 +3,7 @@
  * @Author: yong.li
  * @Date: 2024-01-04 11:51:45
  * @LastEditors: yong.li
- * @LastEditTime: 2024-01-08 10:00:51
+ * @LastEditTime: 2024-09-29 15:55:34
  */
 import { createWithEqualityFn } from 'zustand/traditional'
 import siteMetadata from '@/config/siteMetadata'
@@ -21,6 +21,8 @@ interface ISystemState {
   breadcrumbSetup: (breadcrumbs: BreadcrumbItemType[]) => void
   breadcrumbReset: () => void
   currentUserInfoSetup: (currentUserInfo?: CurrentUserInfo) => void
+  themeMode: 'light' | 'dark'
+  themeModeSetup: (mode: 'light' | 'dark') => void
 }
 
 const initThemeColor = siteMetadata.themeConfig.primaryColor // 获取初始主题颜色
@@ -41,6 +43,7 @@ const useSystemStore = createWithEqualityFn<ISystemState>(
     isSiderCollapsed: localStorage.get('_SIDER_COLLAPSED') === 'false' ? false : initSiderCollapsed,
     breadcrumbs: initBreadcrumbs,
     currentUserInfo: initCurrentUserInfo,
+    themeMode: 'light',
     /**
      * 设置主题颜色
      * @param colorPrimary
@@ -93,6 +96,15 @@ const useSystemStore = createWithEqualityFn<ISystemState>(
           localStorage.set('_USER_INFO', currentUserInfo, 'crypto-hash')
         }
         return { currentUserInfo }
+      }),
+    /**
+     * 设置主题模式
+     * @param mode 模式
+     * @returns
+     */
+    themeModeSetup: (mode: 'light' | 'dark') =>
+      set(() => {
+        return { themeMode: mode }
       })
   }),
   Object.is // 表示浅比较

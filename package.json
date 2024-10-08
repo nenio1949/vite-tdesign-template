@@ -12,6 +12,9 @@
     "prepare": "husky install",
     "commit": "./node_modules/cz-customizable/standalone.js"
   },
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "dependencies": {
     "@tanstack/react-query": "^5.17.1",
     "@types/crypto-js": "^4.2.1",
